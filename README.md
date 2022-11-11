@@ -22,10 +22,14 @@ After publishing the assets, add the following to your .env files .
 
 ```env
 # Plex API
-
 PLEX_SERVER_URL=
 PLEX_TOKEN=
-PLEX_VALIDATE_SSL=
+
+PLEX_CLIENT_IDENTIFIER=
+PLEX_PRODUCT=havenstd06/laravel-plex
+PLEX_VERSION=1.0.0
+
+PLEX_VALIDATE_SSL=true
 ```
 
 #### Configuration File
@@ -33,10 +37,14 @@ The configuration file plex.php is located in the config folder. Following are i
 
 ```php
 return [
-  'server_url'    => env('DEFAULT_PLEX_SERVER_DIRECT_URL', ''), // Plex Server URL (ex: http://[IP address]:32400)
-  'token'         => env('DEFAULT_PLEX_ACCOUNT_TOKEN', ''),
+    'server_url'         => env('PLEX_SERVER_URL', ''), // Plex Server URL (ex: http://[IP address]:32400)
+    'token'              => env('PLEX_TOKEN', ''),
 
-  'validate_ssl'  => env('PLEX_VALIDATE_SSL', true), // Validate SSL when creating api client.
+    'client_identifier'   => env('PLEX_CLIENT_IDENTIFIER', ''), // (UUID, serial number, or other number unique per device)
+    'product'            => env('PLEX_PRODUCT', 'havenstd06/laravel-plex'), // (Plex application name, eg Laika, Plex Media Server, Media Link)
+    'version'            => env('PLEX_VERSION', '1.0.0'), // (Plex application version number)
+
+    'validate_ssl'       => env('PLEX_VALIDATE_SSL', true), // Validate SSL when creating api client.
 ];
 ```
 ## Usage
@@ -44,7 +52,6 @@ return [
 #### Initialization
 
 ```php
-// Import the class namespaces first, before using it directly
 use Hav2nstd06\LaravelPlex\Services\Plex as PlexClient;
 
 $provider = new PlexClient;
@@ -55,9 +62,14 @@ You can override Plex API configuration by calling setApiCredentials method:
 
 ```php
 $config = [
-    'server_url'     => 'https://example.com',
-    'token'          => 'your-token',
-    'validate_ssl'   => true,
+    'server_url'        => 'https://example.com',
+    'token'             => 'your-token',
+    
+    'client_identifier'  => 'your-client-identifier',
+    'product'           => 'your-product',
+    'version'           => 'your-version',
+    
+    'validate_ssl'      => true,
 ];
 
 $provider->setApiCredentials($config);
@@ -73,8 +85,9 @@ $data = [
         'username/email', // Required
         'password', // Required
     ],
-    'headers' => [ // Headers: https://github.com/Arcanemagus/plex-api/wiki/Plex.tv#request-headers
-        'X-Plex-Client-Identifier' => '', // Required - (UUID, serial number, or other number unique per device)
+    'headers' => [
+        // Headers: https://github.com/Arcanemagus/plex-api/wiki/Plex.tv#request-headers
+        // X-Plex-Client-Identifier is already defined in default config file
     ]
 ];
 

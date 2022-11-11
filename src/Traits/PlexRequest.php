@@ -60,10 +60,6 @@ trait PlexRequest
     private function setApiProviderConfiguration(array $credentials): void
     {
         // Setting Plex API Credentials
-        if (empty($credentials['server_url'])) {
-            throw new RuntimeException("Servers URL missing from the provided configuration. Please add your application server URL.");
-        }
-
         collect($credentials)->map(function ($value, $key) {
             $this->config[$key] = $value;
         });
@@ -73,6 +69,9 @@ trait PlexRequest
         $this->token = $this->config['token'];
 
         $this->setRequestHeader('X-Plex-Token', $this->token);
+        $this->setRequestHeader('X-Plex-Client-Identifier', $this->config['client_identifier']);
+        $this->setRequestHeader('X-Plex-Product', $this->config['product']);
+        $this->setRequestHeader('X-Plex-Version', $this->config['version']);
 
         $this->setOptions($this->config);
     }
