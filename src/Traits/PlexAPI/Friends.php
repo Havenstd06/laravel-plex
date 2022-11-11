@@ -4,7 +4,7 @@ namespace Havenstd06\LaravelPlex\Traits\PlexAPI;
 
 use Psr\Http\Message\StreamInterface;
 
-trait PMS
+trait Friends
 {
     /**
      * Get PMS server shares
@@ -22,7 +22,6 @@ trait PMS
 
         return $this->doPlexRequest();
     }
-
 
     /**
      * Get PMS server share requests
