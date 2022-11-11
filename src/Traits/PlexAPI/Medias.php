@@ -30,16 +30,35 @@ trait Medias
 
     /**
      * Marks item with the corresponding "rating key" as watched.
-     * Use "/:/unscrobble..." to mark unwatched.
      *
      * @param string $key // item rating key
      *
      * @return array|StreamInterface|string
      * @throws \Throwable
      */
-    public function getScrobble(string $key): StreamInterface|array|string
+    public function scrobble(string $key): StreamInterface|array|string
     {
         $this->apiEndPoint = ":/scrobble";
+
+        $this->setRequestQuery('key', $key);
+        $this->setRequestQuery('identifier', 'com.plexapp.plugins.library');
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
+
+    /**
+     * Marks item with the corresponding "rating key" as unwatched.
+     *
+     * @param string $key // item rating key
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function unscrobble(string $key): StreamInterface|array|string
+    {
+        $this->apiEndPoint = ":/unscrobble";
 
         $this->setRequestQuery('key', $key);
         $this->setRequestQuery('identifier', 'com.plexapp.plugins.library');

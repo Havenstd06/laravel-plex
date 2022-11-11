@@ -24,7 +24,7 @@ trait Servers
 
     /**
      * Get server capabilities details.
-     * Transcode bitrate info, server info
+     * Transcode bitrate info, server info.
      *
      * @return array|StreamInterface|string
      * @throws \Throwable
