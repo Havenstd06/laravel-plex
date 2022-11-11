@@ -1,6 +1,6 @@
 <?php
 
-namespace Hav2nstd06\LaravelPlex\Traits;
+namespace Havenstd06\LaravelPlex\Traits;
 
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\ClientException as HttpClientException;

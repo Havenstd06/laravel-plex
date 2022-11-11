@@ -1,14 +1,14 @@
 <?php
 
-namespace Hav2nstd06\LaravelPlex\Providers;
+namespace Havenstd06\LaravelPlex\Providers;
 
 /*
  * Class PlexServiceProvider
- * @package Hav2nstd06\LaravelPlex
+ * @package Havenstd06\LaravelPlex
  */
 
 use Illuminate\Support\ServiceProvider;
-use Hav2nstd06\LaravelPlex\Services\Plex as PlexClient;
+use Havenstd06\LaravelPlex\Services\Plex as PlexClient;
 
 class PlexServiceProvider extends ServiceProvider
 {

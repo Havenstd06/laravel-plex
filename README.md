@@ -9,12 +9,12 @@
 ## Installation
 
 ```bash
-composer require hav2nstd06/laravel-plex
+composer require havenstd06/laravel-plex
 ```
 
 #### Publish Assets
 ```bash
-php artisan vendor:publish --provider="Hav2nstd06\LaravelPlex\Providers\PlexServiceProvider" 
+php artisan vendor:publish --provider="Havenstd06\LaravelPlex\Providers\PlexServiceProvider" 
 ```
 
 #### Configuration
@@ -52,7 +52,7 @@ return [
 #### Initialization
 
 ```php
-use Hav2nstd06\LaravelPlex\Services\Plex as PlexClient;
+use Havenstd06\LaravelPlex\Services\Plex as PlexClient;
 
 $provider = new PlexClient;
 ```

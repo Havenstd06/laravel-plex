@@ -1,10 +1,10 @@
 <?php
 
-namespace Hav2nstd06\LaravelPlex\Facades;
+namespace Havenstd06\LaravelPlex\Facades;
 
 /*
  * Class Facade
- * @package Hav2nstd06\LaravelPlex
+ * @package Havenstd06\LaravelPlex
  */
 
 use Illuminate\Support\Facades\Facade;
@@ -18,6 +18,6 @@ class Plex extends Facade
      */
     protected static function getFacadeAccessor(): string
     {
-        return 'Hav2nstd06\LaravelPlex\PlexFacadeAccessor';
+        return 'Havenstd06\LaravelPlex\PlexFacadeAccessor';
     }
 }

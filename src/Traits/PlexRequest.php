@@ -1,8 +1,8 @@
 <?php
 
-namespace Hav2nstd06\LaravelPlex\Traits;
+namespace Havenstd06\LaravelPlex\Traits;
 
-use Hav2nstd06\LaravelPlex\Services\Plex;
+use Havenstd06\LaravelPlex\Services\Plex;
 use RuntimeException;
 
 trait PlexRequest

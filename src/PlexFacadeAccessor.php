@@ -1,8 +1,8 @@
 <?php
 
-namespace Hav2nstd06\LaravelPlex;
+namespace Havenstd06\LaravelPlex;
 
-use Hav2nstd06\LaravelPlex\Services\Plex as PlexClient;
+use Havenstd06\LaravelPlex\Services\Plex as PlexClient;
 use Exception;
 
 class PlexFacadeAccessor
