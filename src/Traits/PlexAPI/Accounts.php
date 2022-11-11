@@ -21,4 +21,20 @@ trait Accounts
 
         return $this->doPlexRequest();
     }
+
+    /**
+     * Get Plex.TV account information.
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     *
+     */
+    public function getPlexAccount(): StreamInterface|array|string
+    {
+        $this->apiEndPoint = "myplex/account";
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
 }
