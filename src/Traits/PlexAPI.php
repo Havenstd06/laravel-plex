@@ -9,6 +9,7 @@ use Havenstd06\LaravelPlex\Traits\PlexAPI\Libraries;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Logs;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Medias;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Playlists;
+use Havenstd06\LaravelPlex\Traits\PlexAPI\PMS;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Servers;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Sessions;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Shared;
@@ -27,4 +28,5 @@ trait PlexAPI
     use Medias;
     use System;
     use Users;
+    use PMS;
 }

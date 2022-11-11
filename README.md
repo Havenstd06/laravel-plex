@@ -129,6 +129,15 @@ $provider->validateUser('username | email');
 
 <hr>
 
+#### Friends
+
+Get PMS server shares
+```php
+$provider->getFriends();
+```
+
+<hr>
+
 #### Server
 
 Get the local List of servers.
