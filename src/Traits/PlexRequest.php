@@ -29,7 +29,7 @@ trait PlexRequest
      *
      * @var array
      */
-    protected array $options;
+    protected array $options = [];
 
     /**
      * Set Plex API Credentials.
@@ -73,6 +73,10 @@ trait PlexRequest
         });
 
         $this->validateSSL = $credentials['validate_ssl'];
+
+        $this->token = $credentials['token'];
+
+        $this->setRequestHeader('X-Plex-Token', $this->token);
 
         $this->setOptions($credentials);
     }

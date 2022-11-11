@@ -23,11 +23,7 @@ class Plex
 
         $this->httpBodyParam = 'form_params';
 
-        $this->options = [];
-        $this->options['headers'] = [
-            'Accept'        => 'application/json',
-            'X-Plex-Token'  => $this->token
-        ];
+        $this->setRequestHeader('Accept', 'application/json');
     }
 
     /**
