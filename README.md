@@ -306,6 +306,16 @@ $provider->progress('item rating key', 'offset');
 
 <hr>
 
+#### Translations
+
+Get Translations for example: fr
+```php
+$provider->getTranslations('fr');
+```
+
+
+<hr>
+
 ## Acknowledgements
 
 - [Plexopedia](https://www.plexopedia.com/plex-media-server/api/)

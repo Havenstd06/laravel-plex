@@ -14,6 +14,7 @@ use Havenstd06\LaravelPlex\Traits\PlexAPI\Servers;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Sessions;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Shared;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\System;
+use Havenstd06\LaravelPlex\Traits\PlexAPI\Translations;
 use Havenstd06\LaravelPlex\Traits\PlexAPI\Users;
 
 trait PlexAPI
@@ -29,4 +30,5 @@ trait PlexAPI
     use System;
     use Users;
     use Friends;
+    use Translations;
 }
