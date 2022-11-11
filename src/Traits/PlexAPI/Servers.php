@@ -23,6 +23,23 @@ trait Servers
     }
 
     /**
+     * Get simple list of servers
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function getSimpleServers(): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "pms/servers.xml?includeLite=1";
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
+
+    /**
      * Get server capabilities details.
      * Transcode bitrate info, server info.
      *

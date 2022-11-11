@@ -150,6 +150,11 @@ Get the local List of servers.
 $provider->getServers();
 ```
 
+Get simple list of servers
+```php
+$provider->getSimpleServers();
+```
+
 Get server capabilities details. Transcode bitrate info, server info.
 ```php
 $provider->getServerCapabilities();
