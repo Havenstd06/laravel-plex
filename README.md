@@ -115,6 +115,20 @@ $provider->getServerPlexAccount();
 
 <hr>
 
+#### Users
+
+List all home users, including guests (Users & Sharing in UI)
+```php
+$provider->getUsers();
+```
+
+Validate username or email
+```php
+$provider->validateUser('username | email');
+```
+
+<hr>
+
 #### Server
 
 Get the local List of servers.
