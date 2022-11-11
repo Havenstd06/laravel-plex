@@ -212,7 +212,12 @@ $provider->getViewsHistory();
 
 #### Devices
 
-Get devices details.
+Gets a list of available clients and servers.
+```php
+$provider->getDevices();
+```
+
+Get servers devices details.
 ```php
 $provider->getDevices();
 ```
