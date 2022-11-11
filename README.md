@@ -40,7 +40,7 @@ return [
     'server_url'         => env('PLEX_SERVER_URL', ''), // Plex Server URL (ex: http://[IP address]:32400)
     'token'              => env('PLEX_TOKEN', ''),
 
-    'client_identifier'   => env('PLEX_CLIENT_IDENTIFIER', ''), // (UUID, serial number, or other number unique per device)
+    'client_identifier'  => env('PLEX_CLIENT_IDENTIFIER', ''), // (UUID, serial number, or other number unique per device)
     'product'            => env('PLEX_PRODUCT', 'havenstd06/laravel-plex'), // (Plex application name, eg Laika, Plex Media Server, Media Link)
     'version'            => env('PLEX_VERSION', '1.0.0'), // (Plex application version number)
 
@@ -65,7 +65,7 @@ $config = [
     'server_url'        => 'https://example.com',
     'token'             => 'your-token',
     
-    'client_identifier'  => 'your-client-identifier',
+    'client_identifier' => 'your-client-identifier',
     'product'           => 'your-product',
     'version'           => 'your-version',
     
