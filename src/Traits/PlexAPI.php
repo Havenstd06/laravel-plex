@@ -7,18 +7,22 @@ use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Databases;
 use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Devices;
 use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Libraries;
 use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Logs;
+use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Medias;
 use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Playlists;
-use Hav2nstd06\LaravelPlex\Traits\PlexAPI\ServerCapabilities;
-use Hav2nstd06\LaravelPlex\Traits\PlexAPI\ServerIdentity;
+use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Servers;
+use Hav2nstd06\LaravelPlex\Traits\PlexAPI\Sessions;
+use Hav2nstd06\LaravelPlex\Traits\PlexAPI\System;
 
 trait PlexAPI
 {
-    use ServerCapabilities;
-    use ServerIdentity;
+    use Servers;
     use Libraries;
     use Accounts;
     use Devices;
     use Databases;
     use Logs;
     use Playlists;
+    use Sessions;
+    use Medias;
+    use System;
 }
