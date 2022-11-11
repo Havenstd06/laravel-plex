@@ -1,0 +1,40 @@
+{
+    "name": "hav2nstd06/laravel-plex",
+    "type": "library",
+    "description": "A Laravel Plex API to manage your Plex server",
+    "keywords": ["http", "rest", "web service", "plex", "laravel plex"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Thomas",
+            "email": "me@hvs.cx"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Hav2nstd06\\LaravelPlex\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.2|^8.0",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "~7.0",
+        "illuminate/support": "~6.0|~7.0|~8.0|~9.0",
+        "nesbot/carbon": "~2.0"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hav2nstd06\\LaravelPlex\\Providers\\PlexServiceProvider"
+            ],
+            "aliases": {
+                "Plex": "Hav2nstd06\\LaravelPlex\\Facades\\Plex"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
