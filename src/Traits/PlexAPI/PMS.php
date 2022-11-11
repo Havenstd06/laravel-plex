@@ -22,4 +22,22 @@ trait PMS
 
         return $this->doPlexRequest();
     }
+
+
+    /**
+     * Get PMS server share requests
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function getFriendsRequests(): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "pms/friends/requests";
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
 }

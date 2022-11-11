@@ -136,6 +136,11 @@ Get PMS server shares
 $provider->getFriends();
 ```
 
+Get PMS server share requests
+```php
+$provider->getFriendsRequests();
+```
+
 <hr>
 
 #### Server
