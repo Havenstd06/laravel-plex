@@ -31,11 +31,13 @@ PLEX_VALIDATE_SSL=
 #### Configuration File
 The configuration file plex.php is located in the config folder. Following are its contents when published:
 
-```json
-'server_url'    => env('PLEX_SERVER_URL', ''), // Plex Server URL (ex: http://[IP address]:32400)
-'token'         => env('PLEX_TOKEN', ''),
+```php
+return [
+  'server_url'    => env('DEFAULT_PLEX_SERVER_DIRECT_URL', ''), // Plex Server URL (ex: http://[IP address]:32400)
+  'token'         => env('DEFAULT_PLEX_ACCOUNT_TOKEN', ''),
 
-'validate_ssl'  => env('PLEX_VALIDATE_SSL', true), // Validate SSL when creating api client.
+  'validate_ssl'  => env('PLEX_VALIDATE_SSL', true), // Validate SSL when creating api client.
+];
 ```
 ## Usage
 
@@ -73,7 +75,7 @@ The key associated with a library. This key can be found by calling the ``getLib
 $provider->getLibrary(2);
 ```
 
-#### LibrPlaries
+#### Playlists
 
 ```php
 $provider->getPlaylists();
