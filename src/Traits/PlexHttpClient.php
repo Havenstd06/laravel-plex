@@ -7,6 +7,7 @@ use GuzzleHttp\Exception\ClientException as HttpClientException;
 use GuzzleHttp\Utils;
 use Psr\Http\Message\StreamInterface;
 use RuntimeException;
+use SimpleXMLElement;
 
 trait PlexHttpClient
 {
@@ -153,6 +154,61 @@ trait PlexHttpClient
     }
 
     /**
+     * Check if returned string isXml
+     *
+     * @param string $value
+     * @return bool
+     */
+    private function isXml(string $value): bool
+    {
+        $prev = libxml_use_internal_errors(true);
+
+        $doc = simplexml_load_string($value);
+        $errors = libxml_get_errors();
+
+        libxml_clear_errors();
+        libxml_use_internal_errors($prev);
+
+        return false !== $doc && empty($errors);
+    }
+
+    /**
+     * Convert XML to Json properly
+     *
+     * @param SimpleXMLElement $xmlNode
+     * @return array
+     */
+    private function xmlToJson(SimpleXMLElement $xmlNode): array
+    {
+        $data = [];
+        $nodeName = $xmlNode->getName();
+        $currentObject = [];
+
+        if (count($xmlNode->attributes()) > 0) {
+            foreach($xmlNode->attributes() as $key => $value) {
+                $currentObject[$key] = (string) $value;
+            }
+        }
+
+        $stringContent = trim((string) $xmlNode);
+        if (strlen($stringContent) > 0) {
+            $currentObject["content"] = $stringContent;
+        }
+
+        if (count($xmlNode->children()) > 0) {
+            $currentObject['children'] = [];
+
+            foreach ($xmlNode->children() as $childXmlNode) {
+                $currentObject['children'][] = $this->xmlToJson($childXmlNode);
+            }
+        }
+
+        $data[$nodeName] = $currentObject;
+
+        return $data;
+    }
+
+    /**
      * Perform Plex API request & return response.
      *
      * @throws \Throwable
@@ -188,7 +244,17 @@ trait PlexHttpClient
             // Perform Plex HTTP API request.
             $response = $this->makeHttpRequest();
 
-            return ($decode === false) ? $response->getContents() : Utils::jsonDecode($response, true);
+            $data = $response->getContents();
+
+            if ($this->isXml($data)) {
+                $content = str_replace(array("\n", "\r", "\t"), '', $data);
+                $content = trim(str_replace('"', "'", $content));
+                $xml = new \SimpleXMLElement($content);
+
+                $data = Utils::jsonEncode($this->xmlToJson($xml), true);
+            }
+
+            return ($decode === false) ? $data : Utils::jsonDecode($data, true);
         } catch (RuntimeException $t) {
             return ($decode === false) ? $t->getMessage() : Utils::jsonDecode('{"error":'.$t->getMessage().'}', true);
         }
