@@ -78,7 +78,7 @@ trait Medias
      * @return array|StreamInterface|string
      * @throws \Throwable
      */
-    public function getProgress(string $key, int $time): StreamInterface|array|string
+    public function progress(string $key, int $time): StreamInterface|array|string
     {
         $this->apiEndPoint = ":/progress";
 
