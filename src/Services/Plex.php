@@ -34,6 +34,8 @@ class Plex
     protected function setOptions(array $credentials): void
     {
         // Setting API Endpoint
-        $this->config['api_url'] = $credentials['server_url'];
+        $this->config['server_api_url'] = $credentials['server_url'];
+
+        $this->config['plex_tv_api_url'] = 'https://plex.tv';
     }
 }

@@ -25,6 +25,13 @@ trait PlexHttpClient
     private array $httpClientConfig;
 
     /**
+     * Plex API Base URL.
+     *
+     * @var string
+     */
+    protected string $apiBaseUrl;
+
+    /**
      * Plex API Endpoint.
      *
      * @var string
@@ -141,6 +148,8 @@ trait PlexHttpClient
     {
         $validateSSL = empty($this->validateSSL) ? true : $this->validateSSL;
         $this->validateSSL = $validateSSL;
+
+        $this->apiBaseUrl = $this->config['server_api_url'];
     }
 
     /**
@@ -174,7 +183,7 @@ trait PlexHttpClient
     private function doPlexRequest(bool $decode = true): StreamInterface|array|string
     {
         try {
-            $this->apiUrl = collect([$this->config['api_url'], $this->apiEndPoint])->implode('/');
+            $this->apiUrl = collect([$this->apiBaseUrl, $this->apiEndPoint])->implode('/');
 
             // Perform Plex HTTP API request.
             $response = $this->makeHttpRequest();
