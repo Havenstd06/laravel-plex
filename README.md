@@ -98,14 +98,19 @@ $plexUser = $provider->signIn($data, false);
 $token = $plexUser['user']['authToken'];
 ```
 
-Get accounts details.
+Get server accounts details.
 ```php
 $provider->getAccounts();
 ```
 
-Get Plex.TV account information.
+Get account information
 ```php
 $provider->getPlexAccount();
+```
+
+Get Plex.TV account information.
+```php
+$provider->getServerPlexAccount();
 ```
 
 <hr>

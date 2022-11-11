@@ -13,6 +13,24 @@ trait Accounts
      * @throws \Throwable
      *
      */
+    public function getPlexAccount(): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "users/account.json";
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
+
+    /**
+     * Get account information
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     *
+     */
     public function getAccounts(): StreamInterface|array|string
     {
         $this->apiEndPoint = "accounts";
@@ -29,7 +47,7 @@ trait Accounts
      * @throws \Throwable
      *
      */
-    public function getPlexAccount(): StreamInterface|array|string
+    public function getServerPlexAccount(): StreamInterface|array|string
     {
         $this->apiEndPoint = "myplex/account";
 
