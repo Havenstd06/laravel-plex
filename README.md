@@ -64,6 +64,33 @@ $provider->setApiCredentials($config);
 ```
 ## Integrations
 
+#### Accounts
+
+**Sign In** to return Plex user data (included token).
+```php
+$data = [
+    'auth' => [
+        'username/email', // Required
+        'password', // Required
+    ],
+    'headers' => [ // Headers: https://github.com/Arcanemagus/plex-api/wiki/Plex.tv#request-headers
+        'X-Plex-Client-Identifier' => '', // Required - (UUID, serial number, or other number unique per device)
+    ]
+];
+
+// The second parameter allows you to choose if you want to
+// authenticate with the token registered in the config
+// (ONLY IF THE TOKEN EXISTS).
+$plexUser = $provider->signIn($data, false);
+$token = $plexUser['user']['authToken'];
+```
+
+```php
+$provider->getAccounts();
+```
+
+<hr>
+
 #### Libraries
 
 ```php
@@ -89,12 +116,6 @@ $provider->getPlaylist(2);
 The key associated with a library. This key can be found by calling the ``getPlaylists`` method.
 ```php
 $provider->getPlaylistItems(2);
-```
-
-#### Accounts
-
-```php
-$provider->getAccounts();
 ```
 
 #### Databases
