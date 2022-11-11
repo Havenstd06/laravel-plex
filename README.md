@@ -130,6 +130,7 @@ $provider->getServerIdentity();
 ## Acknowledgements
 
 - [Plexopedia](https://www.plexopedia.com/plex-media-server/api/)
+- [Arcanemagus/Plex-API](https://github.com/Arcanemagus/plex-api/wiki)
 
 
 ## License
