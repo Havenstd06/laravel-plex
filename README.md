@@ -85,68 +85,175 @@ $plexUser = $provider->signIn($data, false);
 $token = $plexUser['user']['authToken'];
 ```
 
+Get accounts details.
 ```php
 $provider->getAccounts();
+```
+
+Get Plex.TV account information.
+```php
+$provider->getPlexAccount();
+```
+
+<hr>
+
+#### Server
+
+Get the local List of servers.
+```php
+$provider->getServers();
+```
+
+Get server capabilities details. Transcode bitrate info, server info.
+```php
+$provider->getServerCapabilities();
+```
+
+Get server identity details.
+```php
+$provider->getServerIdentity();
+```
+
+Gets the server preferences.
+```php
+$provider->getServerPreferences();
+```
+
+<hr>
+
+#### System
+
+General plex system information.
+```php
+$provider->getSystem();
+```
+
+Agents available (and some of their configuration)
+```php
+$provider->getSystemAgents();
+```
+
+<hr>
+
+#### Databases
+
+This will search in the database for the string provided.
+```php
+$provider->searchDatabase('Avengers');
+```
+
+<hr>
+
+#### Sessions
+
+This will retrieve the "Now Playing" Information of the PMS.
+```php
+$provider->getNowPlaying();
+```
+
+Retrieves a listing of all history views.
+```php
+$provider->getViewsHistory();
+```
+
+<hr>
+
+#### Devices
+
+Get devices details.
+```php
+$provider->getDevices();
 ```
 
 <hr>
 
 #### Libraries
 
+This will search in the library for the string provided. 
+The second parameter is the limit.
+```php
+$provider->searchLibrary('Avengers', 10);
+```
+
+Show ondeck list
+```php
+$provider->getOnDeck();
+```
+
+Contains all of the sections on the PMS.
+Confusingly, Plex's UI calls a section a library: e.g. "TV shows" or "Movies".
+This acts as a directory and you are able to "walk" through it.
 ```php
 $provider->getLibraries();
 ```
 
-The key associated with a library. This key can be found by calling the ``getLibraries`` method.
+Get all data in the library for the section passed in.
 ```php
-$provider->getLibrary(2);
+$provider->getLibrary(1);
 ```
+
+Delete a section
+```php
+$provider->deleteLibrary(1);
+```
+
+Refreshes the library for the section passed in.
+```php
+$provider->refreshLibrary(1);
+```
+
+<hr>
 
 #### Playlists
 
+Get playlists list.
 ```php
 $provider->getPlaylists();
 ```
 
-The key associated with a library. This key can be found by calling the ``getPlaylists`` method.
+The key associated with a library.  
+This key can be found by calling the ``getPlaylists`` method.
 ```php
 $provider->getPlaylist(2);
 ```
 
-The key associated with a library. This key can be found by calling the ``getPlaylists`` method.
+The key associated with a library.  
+This key can be found by calling the ``getPlaylists`` method.
 ```php
 $provider->getPlaylistItems(2);
 ```
 
-#### Databases
+<hr>
 
+#### Medias
+
+Get photo of specified height and width.
 ```php
-$provider->downloadDatabases();
+$provider->getPhoto('path', 480, 719);
 ```
 
-#### Logs
-
+Ask the server whether it can provide the video with/without transcoding (based on the client profile).
 ```php
-$provider->downloadLogs();
+$provider->getVideo('path', 'http');
 ```
 
-#### Devices
-
+Marks item with the corresponding "rating key" as watched.
 ```php
-$provider->getDevices();
+$provider->scrobble('item rating key');
 ```
 
-#### ServerCapabilities
-
+Marks item with the corresponding "rating key" as unwatched.
 ```php
-$provider->getServerCapabilities();
+$provider->unscrobble('item rating key');
 ```
 
-#### ServerIdentity
-
+Marks media item with the corresponding "rating key" as partially watched, populating its "viewOffset" field.  
+Time is in milliseconds.
 ```php
-$provider->getServerIdentity();
+$provider->progress('item rating key', 'offset');
 ```
+
+<hr>
 
 ## Acknowledgements
 
