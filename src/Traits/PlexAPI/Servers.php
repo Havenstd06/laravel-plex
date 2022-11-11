@@ -23,16 +23,22 @@ trait Servers
     }
 
     /**
-     * Get simple list of servers
+     * Gets a list of servers and their sections. Limited to servers that have remote access enabled
+     *
+     * @param bool $lite
      *
      * @return array|StreamInterface|string
      * @throws \Throwable
      */
-    public function getSimpleServers(): StreamInterface|array|string
+    public function getPmsServers(bool $lite = false): StreamInterface|array|string
     {
         $this->apiBaseUrl = $this->config['plex_tv_api_url'];
 
-        $this->apiEndPoint = "pms/servers.xml?includeLite=1";
+        $this->apiEndPoint = "pms/servers.xml";
+
+        if ($lite) {
+            $this->setRequestQuery('includeLite', '1');
+        }
 
         $this->verb = 'get';
 

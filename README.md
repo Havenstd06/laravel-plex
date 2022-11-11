@@ -150,9 +150,10 @@ Get the local List of servers.
 $provider->getServers();
 ```
 
-Get simple list of servers
+Gets a list of servers and their sections. Limited to servers that have remote access enabled.
+The second parameter is for include lite.
 ```php
-$provider->getSimpleServers();
+$provider->getPmsServers(true);
 ```
 
 Get server capabilities details. Transcode bitrate info, server info.
