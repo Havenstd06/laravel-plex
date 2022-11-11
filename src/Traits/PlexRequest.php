@@ -64,10 +64,6 @@ trait PlexRequest
             throw new RuntimeException("Servers URL missing from the provided configuration. Please add your application server URL.");
         }
 
-        if (empty($credentials['token'])) {
-            throw new RuntimeException("Token missing from the provided configuration. Please add your application token.");
-        }
-
         collect($credentials)->map(function ($value, $key) {
             $this->config[$key] = $value;
         });
@@ -92,6 +88,32 @@ trait PlexRequest
     public function setRequestHeader(string $key, string $value): Plex
     {
         $this->options['headers'][$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Function to add request header.
+     *
+     * @param array $value
+     * @return Plex
+     */
+    public function setArrayRequestHeader(array $value): Plex
+    {
+        $this->options['headers'] = array_merge_recursive($this->options['headers'], $value);
+
+        return $this;
+    }
+
+    /**
+     * Function to remove request header.
+     *
+     * @param string $key
+     * @return Plex
+     */
+    public function removeRequestHeader(string $key): Plex
+    {
+        unset($this->options['headers'][$key]);
 
         return $this;
     }
