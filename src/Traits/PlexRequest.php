@@ -61,7 +61,7 @@ trait PlexRequest
     {
         // Setting Plex API Credentials
         if (empty($credentials['server_url'])) {
-            throw new RuntimeException("Server URL missing from the provided configuration. Please add your application server URL.");
+            throw new RuntimeException("Servers URL missing from the provided configuration. Please add your application server URL.");
         }
 
         if (empty($credentials['token'])) {
@@ -72,13 +72,13 @@ trait PlexRequest
             $this->config[$key] = $value;
         });
 
-        $this->validateSSL = $credentials['validate_ssl'];
+        $this->validateSSL = $this->config['validate_ssl'];
 
-        $this->token = $credentials['token'];
+        $this->token = $this->config['token'];
 
         $this->setRequestHeader('X-Plex-Token', $this->token);
 
-        $this->setOptions($credentials);
+        $this->setOptions($this->config);
     }
 
     /**
@@ -112,6 +112,39 @@ trait PlexRequest
         }
 
         throw new RuntimeException('Options header is not set.');
+    }
+
+    /**
+     * Function to add request query.
+     *
+     * @param string $key
+     * @param string $value
+     *
+     * @return Plex
+     */
+    public function setRequestQuery(string $key, string $value): Plex
+    {
+        $this->options['query'][$key] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Return request options header.
+     *
+     * @param string $key
+     *
+     * @throws \RuntimeException
+     *
+     * @return string
+     */
+    public function getRequestQuery(string $key): string
+    {
+        if (isset($this->options['query'][$key])) {
+            return $this->options['query'][$key];
+        }
+
+        throw new RuntimeException('Options query is not set.');
     }
 
     /**
