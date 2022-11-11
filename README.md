@@ -218,6 +218,15 @@ $provider->getDevices();
 
 <hr>
 
+#### Resources
+
+Gets a list of servers, devices and their sections
+```php
+$provider->getResources();
+```
+
+<hr>
+
 #### Libraries
 
 This will search in the library for the string provided. 
@@ -312,7 +321,6 @@ Get Translations for example: fr
 ```php
 $provider->getTranslations('fr');
 ```
-
 
 <hr>
 
