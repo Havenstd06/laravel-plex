@@ -139,14 +139,17 @@ $provider->getFriends();
 Invite a friend.  
 If you don't pass an array with the library ids (`$librarySectionIds`), all the libraries of the server will be taken.
 Settings are optional too.
+
 ```php
+use Havenstd06\LaravelPlex\Classes\FriendRestrictionsSettings;
+
 $librarySectionIds = [
     652397653,
     765367227,
     887542234
 ];
 
-$settings = new InviteFriendsSettings(
+$settings = new FriendRestrictionsSettings(
     allowChannels: '1',
     allowSubtitleAdmin: '1',
     allowSync: '0',
@@ -180,8 +183,11 @@ $provider->getFriendDetail(12345678); // Friend ID / InvitedID
 ```
 
 Update friend restrictions
+
 ```php
-$settings = new InviteFriendsSettings(
+use Havenstd06\LaravelPlex\Classes\FriendRestrictionsSettings;
+
+$settings = new FriendRestrictionsSettings(
     allowChannels: '1',
     allowSubtitleAdmin: '1',
     allowSync: '0',
@@ -191,7 +197,7 @@ $settings = new InviteFriendsSettings(
     filterTelevision: '',
 );
 
-$provider->updateFriendRestriction(12345678, $settings); // Friend ID / InvitedID
+$provider->updateFriendRestrictions(12345678, $settings); // Friend ID / InvitedID
 ```
 
 Update friend libraries

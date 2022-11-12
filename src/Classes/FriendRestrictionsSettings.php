@@ -2,7 +2,7 @@
 
 namespace Havenstd06\LaravelPlex\Classes;
 
-class InviteFriendsSettings
+class FriendRestrictionsSettings
 {
     protected string $allowChannels = '1';
 

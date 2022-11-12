@@ -2,7 +2,7 @@
 
 namespace Havenstd06\LaravelPlex\Traits\PlexAPI;
 
-use Havenstd06\LaravelPlex\Classes\InviteFriendsSettings;
+use Havenstd06\LaravelPlex\Classes\FriendRestrictionsSettings;
 use Psr\Http\Message\StreamInterface;
 
 trait Friends
@@ -46,12 +46,12 @@ trait Friends
      *
      * @param string $email
      * @param array $librariesIds
-     * @param InviteFriendsSettings $settings
+     * @param FriendRestrictionsSettings $settings
      *
      * @return array|StreamInterface|string
      * @throws \Throwable
      */
-    public function inviteFriend(string $email, array $librariesIds = [], InviteFriendsSettings $settings = new InviteFriendsSettings): StreamInterface|array|string
+    public function inviteFriend(string $email, array $librariesIds = [], FriendRestrictionsSettings $settings = new FriendRestrictionsSettings): StreamInterface|array|string
     {
         // get server identity before changing ApiBase URL
         $machineIdentifier = $this->getServerIdentity()['MediaContainer']['machineIdentifier'];
@@ -151,12 +151,12 @@ trait Friends
      * Update friend restrictions
      *
      * @param int $id // friend ID / InvitedID
-     * @param InviteFriendsSettings $settings
+     * @param FriendRestrictionsSettings $settings
      *
      * @return array|StreamInterface|string
      * @throws \Throwable
      */
-    public function updateFriendRestriction(int $id, InviteFriendsSettings $settings = new InviteFriendsSettings): StreamInterface|array|string
+    public function updateFriendRestrictions(int $id, FriendRestrictionsSettings $settings = new FriendRestrictionsSettings): StreamInterface|array|string
     {
         $this->apiBaseUrl = $this->config['plex_tv_api_url'];
 
