@@ -169,9 +169,9 @@ Remove friend.
 $provider->removeFriend(12345678); // Friend ID / InvitedID
 ```
 
-Get friends requests
+Get friends details
 ```php
-$provider->getFriendsRequests();
+$provider->getFriendDetail(12345678); // Friend ID / InvitedID
 ```
 
 <hr>

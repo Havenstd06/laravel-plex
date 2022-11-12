@@ -127,4 +127,23 @@ trait Friends
 
         return $this->doPlexRequest();
     }
+
+    /**
+     * Get friends details
+     *
+     * @param int $id
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function getFriendDetail(int $id): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "api/v2/friends/{$id}";
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
 }
