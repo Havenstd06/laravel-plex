@@ -253,6 +253,11 @@ This acts as a directory and you are able to "walk" through it.
 $provider->getLibraries();
 ```
 
+Get libraries lists with they ids
+```php
+$provider->getLibrariesIds();
+```
+
 Get all data in the library for the section passed in.
 ```php
 $provider->getLibrary(1);
