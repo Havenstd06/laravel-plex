@@ -87,4 +87,25 @@ trait Friends
 
         return $this->doPlexRequest();
     }
+
+    /**
+     * Cancel friend invitation
+     *
+     * @param string $email
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function cancelInvite(string $email): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "api/v2/friends/invite";
+
+        $this->setRequestQuery('identifier', $email);
+
+        $this->verb = 'delete';
+
+        return $this->doPlexRequest(false);
+    }
 }

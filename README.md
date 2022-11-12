@@ -164,6 +164,11 @@ $settings = new InviteFriendsSettings(
 $provider->inviteFriend('me@hvs.cx', $librarySectionIds, $settings);
 ```
 
+Cancel invite.  
+```php
+$provider->cancelInvite('me@hvs.cx');
+```
+
 <hr>
 
 #### Server
