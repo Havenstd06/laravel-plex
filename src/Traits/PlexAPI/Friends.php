@@ -146,4 +146,21 @@ trait Friends
 
         return $this->doPlexRequest();
     }
+
+    /**
+     * Get pending invitations list
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function getPendingInvites(): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "api/v2/friends/invites/sent/pending";
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
 }

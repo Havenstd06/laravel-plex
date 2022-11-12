@@ -164,6 +164,11 @@ Cancel invitation.
 $provider->cancelInvite('me@hvs.cx');
 ```
 
+Get pending invitations list.
+```php
+$provider->getPendingInvites();
+```
+
 Remove friend.
 ```php
 $provider->removeFriend(12345678); // Friend ID / InvitedID
