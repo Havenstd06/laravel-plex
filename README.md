@@ -194,6 +194,17 @@ $settings = new InviteFriendsSettings(
 $provider->updateFriendRestriction(12345678, $settings); // Friend ID / InvitedID
 ```
 
+Update friend libraries
+```php
+$librarySectionIds = [
+    652397653,
+    765367227,
+    887542234
+];
+
+$provider->updateFriendLibraries(12345678, $librarySectionIds); // Friend ID / InvitedID
+```
+
 <hr>
 
 #### Server

@@ -170,6 +170,52 @@ trait Friends
     }
 
     /**
+     * Update friend Libraries
+     *
+     * @param int $id // friend ID / InvitedID
+     * @param array|null $librariesIds
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function updateFriendLibraries(int $id, array $librariesIds = null): StreamInterface|array|string
+    {
+        // get server identity before changing ApiBase URL
+        $machineIdentifier = $this->getServerIdentity()['MediaContainer']['machineIdentifier'];
+
+        // return if $machineIdentifier is not found
+        if (! isset($machineIdentifier)) {
+            return false;
+        }
+
+        if (empty($librariesIds)) {
+            $libraries = $this->getServerDetail()['MediaContainer']['children'][0]['Server']['children'];
+
+            foreach ($libraries as $library) {
+                $librariesIds[] = (int) $library['Section']['id'];
+            }
+        }
+
+        $friendSharedServers = $this->getFriendDetail($id)['sharedServers'];
+
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        // Get the first shared_servers (see api/v2/friends/{$id})
+        $this->apiEndPoint = "api/v2/shared_servers/{$friendSharedServers[0]['id']}";
+
+        $data = [
+            'librarySectionIds' => $librariesIds,
+            'machineIdentifier' => $machineIdentifier,
+        ];
+
+        $this->options['json'] = $data;
+
+        $this->verb = 'post';
+
+        return $this->doPlexRequest();
+    }
+
+    /**
      * Get pending invitations list
      *
      * @return array|StreamInterface|string
