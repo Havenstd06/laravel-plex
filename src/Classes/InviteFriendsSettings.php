@@ -4,13 +4,13 @@ namespace Havenstd06\LaravelPlex\Classes;
 
 class InviteFriendsSettings
 {
-    protected bool $allowChannels = true;
+    protected string $allowChannels = '1';
 
-    protected bool $allowSubtitleAdmin = true;
+    protected string $allowSubtitleAdmin = '1';
 
-    protected string $allowSync = '';
+    protected string $allowSync = '0'; // Allow Downloads
 
-    protected int $allowTuners = 0;
+    protected string $allowTuners = '0';
 
     protected string $filterMovies = '';
 
@@ -19,10 +19,10 @@ class InviteFriendsSettings
     protected string $filterTelevision = '';
 
     public function __construct(
-        bool $allowChannels = true,
-        bool $allowSubtitleAdmin = true,
-        string $allowSync = '',
-        int $allowTuners = 0,
+        string $allowChannels = '1',
+        string $allowSubtitleAdmin = '1',
+        string $allowSync = '0',
+        string $allowTuners = '0',
         string $filterMovies = '',
         string $filterMusic = '',
         string $filterTelevision = '',
@@ -37,33 +37,33 @@ class InviteFriendsSettings
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isAllowChannels(): bool
+    public function isAllowChannels(): string
     {
         return $this->allowChannels;
     }
 
     /**
-     * @param bool $allowChannels
+     * @param string $allowChannels
      */
-    public function setAllowChannels(bool $allowChannels): void
+    public function setAllowChannels(string $allowChannels): void
     {
         $this->allowChannels = $allowChannels;
     }
 
     /**
-     * @return bool
+     * @return string
      */
-    public function isAllowSubtitleAdmin(): bool
+    public function isAllowSubtitleAdmin(): string
     {
         return $this->allowSubtitleAdmin;
     }
 
     /**
-     * @param bool $allowSubtitleAdmin
+     * @param string $allowSubtitleAdmin
      */
-    public function setAllowSubtitleAdmin(bool $allowSubtitleAdmin): void
+    public function setAllowSubtitleAdmin(string $allowSubtitleAdmin): void
     {
         $this->allowSubtitleAdmin = $allowSubtitleAdmin;
     }
@@ -85,17 +85,17 @@ class InviteFriendsSettings
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function isAllowTuners(): int
+    public function isAllowTuners(): string
     {
         return $this->allowTuners;
     }
 
     /**
-     * @param int $allowTuners
+     * @param string $allowTuners
      */
-    public function setAllowTuners(int $allowTuners): void
+    public function setAllowTuners(string $allowTuners): void
     {
         $this->allowTuners = $allowTuners;
     }

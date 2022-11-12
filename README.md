@@ -147,10 +147,10 @@ $librarySectionIds = [
 ];
 
 $settings = new InviteFriendsSettings(
-    allowChannels: true,
-    allowSubtitleAdmin: true,
-    allowSync: '',
-    allowTuners: 0,
+    allowChannels: '1',
+    allowSubtitleAdmin: '1',
+    allowSync: '0',
+    allowTuners: '0',
     filterMovies: '',
     filterMusic: '',
     filterTelevision: '',
