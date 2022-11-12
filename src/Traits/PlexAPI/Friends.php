@@ -8,7 +8,7 @@ use Psr\Http\Message\StreamInterface;
 trait Friends
 {
     /**
-     * Get PMS server shares
+     * Get shares friends list.
      *
      * @return array|StreamInterface|string
      * @throws \Throwable

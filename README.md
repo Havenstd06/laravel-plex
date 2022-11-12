@@ -131,17 +131,12 @@ $provider->validateUser('username | email');
 
 #### Friends
 
-Get PMS server shares
+Get shares friends list.
 ```php
 $provider->getFriends();
 ```
 
-Get PMS server share requests
-```php
-$provider->getFriendsRequests();
-```
-
-Invite friends.  
+Invite a friend.  
 If you don't pass an array with the library ids (`$librarySectionIds`), all the libraries of the server will be taken.
 Settings are optional too.
 ```php
@@ -164,14 +159,19 @@ $settings = new InviteFriendsSettings(
 $provider->inviteFriend('me@hvs.cx', $librarySectionIds, $settings);
 ```
 
-Cancel invite.  
+Cancel invitation.
 ```php
 $provider->cancelInvite('me@hvs.cx');
 ```
 
-Remove friend.  
+Remove friend.
 ```php
 $provider->removeFriend(12345678); // Friend ID / InvitedID
+```
+
+Get friends requests
+```php
+$provider->getFriendsRequests();
 ```
 
 <hr>
