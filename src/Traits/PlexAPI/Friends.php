@@ -17,7 +17,7 @@ trait Friends
     {
         $this->apiBaseUrl = $this->config['plex_tv_api_url'];
 
-        $this->apiEndPoint = "pms/friends/all";
+        $this->apiEndPoint = "api/v2/friends";
 
         $this->verb = 'get';
 
