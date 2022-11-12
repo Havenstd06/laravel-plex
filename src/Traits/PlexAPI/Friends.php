@@ -148,6 +148,28 @@ trait Friends
     }
 
     /**
+     * Update friend restrictions
+     *
+     * @param int $id // friend ID / InvitedID
+     * @param InviteFriendsSettings $settings
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function updateFriendRestriction(int $id, InviteFriendsSettings $settings = new InviteFriendsSettings): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "api/friends/{$id}";
+
+        $this->options['json'] = $settings->toArray();
+
+        $this->verb = 'put';
+
+        return $this->doPlexRequest();
+    }
+
+    /**
      * Get pending invitations list
      *
      * @return array|StreamInterface|string

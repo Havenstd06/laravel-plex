@@ -179,6 +179,21 @@ Get friends details
 $provider->getFriendDetail(12345678); // Friend ID / InvitedID
 ```
 
+Update friend restrictions
+```php
+$settings = new InviteFriendsSettings(
+    allowChannels: '1',
+    allowSubtitleAdmin: '1',
+    allowSync: '0',
+    allowTuners: '0',
+    filterMovies: '',
+    filterMusic: '',
+    filterTelevision: '',
+);
+
+$provider->updateFriendRestriction(12345678, $settings); // Friend ID / InvitedID
+```
+
 <hr>
 
 #### Server
