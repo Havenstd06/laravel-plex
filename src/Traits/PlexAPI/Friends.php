@@ -200,7 +200,7 @@ trait Friends
 
         $this->apiBaseUrl = $this->config['plex_tv_api_url'];
 
-        // Get the first shared_servers (see api/v2/friends/{$id})
+        // Get the first shared_servers? (see api/v2/friends/{$id})
         $this->apiEndPoint = "api/v2/shared_servers/{$friendSharedServers[0]['id']}";
 
         $data = [
