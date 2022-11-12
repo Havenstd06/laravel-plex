@@ -93,4 +93,29 @@ trait Servers
 
         return $this->doPlexRequest();
     }
+
+    /**
+     * Get servers detail (contain libraries ids)
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function getServerDetail(?string $machineIdentifier = null): StreamInterface|array|string
+    {
+        if (! $machineIdentifier) {
+            $machineIdentifier = $this->getServerIdentity()['MediaContainer']['machineIdentifier'];
+        }
+
+        if (! isset($machineIdentifier)) {
+            return false;
+        }
+
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "api/servers/{$machineIdentifier}";
+
+        $this->verb = 'get';
+
+        return $this->doPlexRequest();
+    }
 }

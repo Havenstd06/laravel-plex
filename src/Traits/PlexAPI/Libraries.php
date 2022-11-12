@@ -46,30 +46,6 @@ trait Libraries
     }
 
     /**
-     * Get libraries lists with they ids
-     *
-     * @return array|StreamInterface|string
-     * @throws \Throwable
-     *
-     */
-    public function getLibrariesIds(): StreamInterface|array|string
-    {
-        $machineIdentifier = $this->getServerIdentity()['MediaContainer']['machineIdentifier'];
-
-        if (! isset($machineIdentifier)) {
-            return false;
-        }
-
-        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
-
-        $this->apiEndPoint = "api/servers/{$machineIdentifier}";
-
-        $this->verb = 'get';
-
-        return $this->doPlexRequest();
-    }
-
-    /**
      * Get all data from library.
      *
      * @param string $libraryId
