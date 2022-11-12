@@ -141,6 +141,29 @@ Get PMS server share requests
 $provider->getFriendsRequests();
 ```
 
+Invite friends.  
+If you don't pass an array with the library ids (`$librarySectionIds`), all the libraries of the server will be taken.
+Settings are optional too.
+```php
+$librarySectionIds = [
+    652397653,
+    765367227,
+    887542234
+];
+
+$settings = new InviteFriendsSettings(
+    allowChannels: true,
+    allowSubtitleAdmin: true,
+    allowSync: '',
+    allowTuners: 0,
+    filterMovies: '',
+    filterMusic: '',
+    filterTelevision: '',
+);
+
+$provider->inviteFriend('me@hvs.cx', $librarySectionIds, $settings);
+```
+
 <hr>
 
 #### Server
@@ -148,6 +171,17 @@ $provider->getFriendsRequests();
 Get the local List of servers.
 ```php
 $provider->getServers();
+```
+
+Get servers detail (contain libraries ids)
+
+```php
+$provider->getServerDetail($machineIdentifier); // optional argument
+```
+
+Get server identity details
+```php
+$provider->getServerIdentity();
 ```
 
 Gets a list of servers and their sections. Limited to servers that have remote access enabled.
@@ -159,11 +193,6 @@ $provider->getPmsServers(true);
 Get server capabilities details. Transcode bitrate info, server info.
 ```php
 $provider->getServerCapabilities();
-```
-
-Get server identity details.
-```php
-$provider->getServerIdentity();
 ```
 
 Gets the server preferences.
@@ -251,11 +280,6 @@ Confusingly, Plex's UI calls a section a library: e.g. "TV shows" or "Movies".
 This acts as a directory and you are able to "walk" through it.
 ```php
 $provider->getLibraries();
-```
-
-Get libraries lists with they ids
-```php
-$provider->getLibrariesIds();
 ```
 
 Get all data in the library for the section passed in.
