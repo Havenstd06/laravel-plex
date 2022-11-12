@@ -169,6 +169,11 @@ Cancel invite.
 $provider->cancelInvite('me@hvs.cx');
 ```
 
+Remove friend.  
+```php
+$provider->removeFriend(12345678); // Friend ID / InvitedID
+```
+
 <hr>
 
 #### Server

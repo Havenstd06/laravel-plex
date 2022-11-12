@@ -108,4 +108,23 @@ trait Friends
 
         return $this->doPlexRequest(false);
     }
+
+    /**
+     * Remove friend
+     *
+     * @param int $id
+     *
+     * @return array|StreamInterface|string
+     * @throws \Throwable
+     */
+    public function removeFriend(int $id): StreamInterface|array|string
+    {
+        $this->apiBaseUrl = $this->config['plex_tv_api_url'];
+
+        $this->apiEndPoint = "api/v2/friends/{$id}";
+
+        $this->verb = 'delete';
+
+        return $this->doPlexRequest();
+    }
 }
