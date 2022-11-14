@@ -217,14 +217,10 @@ trait PlexHttpClient
      */
     private function makeHttpRequest(): StreamInterface
     {
-        try {
-            return $this->client->{$this->verb}(
-                $this->apiUrl,
-                $this->options
-            )->getBody();
-        } catch (HttpClientException $e) {
-            throw new RuntimeException($e->getResponse()->getBody());
-        }
+        return $this->client->{$this->verb}(
+            $this->apiUrl,
+            $this->options
+        )->getBody();
     }
 
     /**
@@ -256,7 +252,7 @@ trait PlexHttpClient
 
             return ($decode === false) ? $data : Utils::jsonDecode($data, true);
         } catch (RuntimeException $t) {
-            return ($decode === false) ? $t->getMessage() : Utils::jsonDecode('{"error":'.$t->getMessage().'}', true);
+            return $t->getMessage();
         }
     }
 }
