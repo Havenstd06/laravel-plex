@@ -16,6 +16,8 @@ trait Libraries
      */
     public function searchLibrary(string $query, int $limit = 20): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "library/search";
 
         $this->setRequestQuery('query', $query);
@@ -38,6 +40,8 @@ trait Libraries
      */
     public function getLibraries(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "library/sections";
 
         $this->verb = 'get';
@@ -56,6 +60,8 @@ trait Libraries
      */
     public function getLibrary(string $libraryId): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "library/sections/{$libraryId}/all";
 
         $this->verb = 'get';
@@ -74,6 +80,8 @@ trait Libraries
      */
     public function deleteLibrary(string $libraryId): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "library/sections/{$libraryId}/all";
 
         $this->verb = 'delete';
@@ -93,6 +101,8 @@ trait Libraries
      */
     public function refreshLibrary(string $libraryId): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "library/sections/{$libraryId}/refresh";
 
         $this->verb = 'get';
@@ -109,6 +119,8 @@ trait Libraries
      */
     public function getOnDeck(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "library/onDeck";
 
         $this->verb = 'get';

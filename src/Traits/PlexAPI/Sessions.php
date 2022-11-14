@@ -15,6 +15,8 @@ trait Sessions
      */
     public function getNowPlaying(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "status/sessions";
 
         $this->verb = 'get';
@@ -31,6 +33,8 @@ trait Sessions
      */
     public function getViewsHistory(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "status/sessions/history/all";
 
         $this->verb = 'get';

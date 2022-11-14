@@ -15,6 +15,8 @@ trait Playlists
      */
     public function getPlaylists(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "playlists";
 
         $this->verb = 'get';
@@ -33,6 +35,8 @@ trait Playlists
      */
     public function getPlaylist(string $playlistId): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "playlists/{$playlistId}";
 
         $this->verb = 'get';
@@ -51,6 +55,8 @@ trait Playlists
      */
     public function getPlaylistItems(string $playlistId): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "playlists/{$playlistId}/items";
 
         $this->verb = 'get';

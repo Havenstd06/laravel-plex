@@ -15,6 +15,8 @@ trait System
      */
     public function getSystem(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "system";
 
         $this->verb = 'get';
@@ -31,6 +33,8 @@ trait System
      */
     public function getSystemAgents(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "system/agents";
 
         $this->verb = 'get';

@@ -17,6 +17,8 @@ trait Medias
      */
     public function getPhoto(string $url, int $width = 480, int $height = 719): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "photo/:/transcode";
 
         $this->setRequestQuery('url', $url);
@@ -38,6 +40,8 @@ trait Medias
      */
     public function scrobble(string $key): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = ":/scrobble";
 
         $this->setRequestQuery('key', $key);
@@ -58,6 +62,8 @@ trait Medias
      */
     public function unscrobble(string $key): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = ":/unscrobble";
 
         $this->setRequestQuery('key', $key);
@@ -80,6 +86,8 @@ trait Medias
      */
     public function progress(string $key, int $time): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = ":/progress";
 
         $this->setRequestQuery('key', $key);
@@ -102,6 +110,8 @@ trait Medias
      */
     public function getVideo(string $path, string $protocol = 'http'): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+        
         $this->apiEndPoint = "video/:/transcode/universal/decision";
 
         $this->setRequestQuery('path', $path);

@@ -33,6 +33,8 @@ trait Devices
      */
     public function getServerDevices(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "devices";
 
         $this->verb = 'get';

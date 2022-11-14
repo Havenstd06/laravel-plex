@@ -33,6 +33,8 @@ trait Accounts
      */
     public function getAccounts(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "accounts";
 
         $this->verb = 'get';
@@ -49,6 +51,8 @@ trait Accounts
      */
     public function getServerPlexAccount(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "myplex/account";
 
         $this->verb = 'get';

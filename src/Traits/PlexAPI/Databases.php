@@ -16,6 +16,8 @@ trait Databases
      */
     public function searchDatabase(string $query): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "search";
 
         $this->setRequestQuery('query', $query);

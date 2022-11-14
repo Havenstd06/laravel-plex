@@ -15,6 +15,8 @@ trait Servers
      */
     public function getServers(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "servers";
 
         $this->verb = 'get';
@@ -55,6 +57,8 @@ trait Servers
      */
     public function getServerCapabilities(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "/";
 
         $this->verb = 'get';
@@ -71,6 +75,8 @@ trait Servers
      */
     public function getServerIdentity(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = "identity";
 
         $this->verb = 'get';
@@ -87,6 +93,8 @@ trait Servers
      */
     public function getServerPreferences(): StreamInterface|array|string
     {
+        $this->apiBaseUrl = $this->config['server_api_url'];
+
         $this->apiEndPoint = ":/prefs";
 
         $this->verb = 'get';
